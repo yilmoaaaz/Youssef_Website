@@ -1,0 +1,535 @@
+<html><head><base href="." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youssef Moaaz's Portfolio</title>
+    <style>
+    /* Previous CSS remains the same */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    
+    body {
+      background-color: #f0f2f5;
+      padding: 20px;
+    }
+    
+    .profile-section {
+      max-width: 800px;
+      margin: 0 auto 20px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    
+    .profile-avatar {
+      width: 150px;
+      height: 150px;
+      background: #1a73e8;
+      border-radius: 50%;
+      margin: 0 auto 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 48px;
+      font-weight: bold;
+    }
+    
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    .skill-badge {
+      background: #1a73e8;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+    
+    /* Rest of the existing CSS */
+    nav {
+      background: #1a73e8;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin: 0 auto 20px auto;
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    
+    nav ul li a.active {
+      background: rgba(255,255,255,0.2);
+    }
+    
+    nav ul li a:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    
+    .upload-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    h1 {
+      text-align: center;
+      color: #1a73e8;
+      margin-bottom: 20px;
+    }
+    
+    .upload-area {
+      border: 2px dashed #1a73e8;
+      border-radius: 10px;
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .upload-area:hover {
+      background-color: #f8f9fa;
+    }
+    
+    .upload-area svg {
+      margin-bottom: 15px;
+      color: #1a73e8;
+    }
+    
+    .files-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .file-card {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+    }
+    
+    .file-card h3 {
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: #333;
+      word-break: break-word;
+    }
+    
+    .file-card p {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+    
+    .delete-btn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      width: 100%;
+      margin-top: 8px;
+    }
+    
+    .delete-btn:hover {
+      background: #c82333;
+    }
+    
+    .section {
+      display: none;
+    }
+    
+    .section.active {
+      display: block;
+    }
+    
+    .download-btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      width: 100%;
+      margin-top: 8px;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+    
+    .download-btn:hover {
+      background: #218838;
+    }
+    
+    .login-container {
+      max-width: 400px;
+      margin: 100px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .role-selection {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .role-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #1a73e8;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .role-btn:hover {
+      background: #1557b0;
+    }
+    
+    .login-form {
+      display: none;
+    }
+    
+    .login-form.active {
+      display: block;
+    }
+    
+    .login-form input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    
+    .login-form button {
+      width: 100%;
+      padding: 10px;
+      background: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .main-content {
+      display: none;
+    }
+    
+    .main-content.active {
+      display: block;
+    }
+    
+    .error-message {
+      color: #dc3545;
+      margin-bottom: 15px;
+      display: none;
+    }
+    </style>
+    </head>
+    <body>
+    
+    <div id="loginSection" class="login-container">
+      <h2 style="text-align: center; margin-bottom: 20px;">Welcome</h2>
+      
+      <div class="role-selection">
+        <button class="role-btn" onclick="selectRole('viewer')">View Projects</button>
+        <button class="role-btn" onclick="selectRole('youssef')">I am Youssef</button>
+      </div>
+    
+      <div id="loginForm" class="login-form">
+        <p class="error-message" id="errorMessage">Invalid username or password</p>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+      </div>
+    </div>
+    
+    <div id="mainContent" class="main-content">
+      <div class="profile-section">
+        <div class="profile-avatar">YM</div>
+        <h1 style="color: #1a73e8; margin-bottom: 10px;">Youssef Moaaz</h1>
+        <p style="color: #666; margin-bottom: 20px;">Grade 6 Student at iSchool</p>
+        <div style="color: #444; line-height: 1.6;">
+          <p>I am a passionate student exploring the world of technology and programming. My journey in coding has equipped me with various skills and knowledge in different programming domains.</p>
+        </div>
+        <div class="skills-container">
+          <div class="skill-badge">Block Based Programming</div>
+          <div class="skill-badge">Python</div>
+          <div class="skill-badge">mBlock</div>
+          <div class="skill-badge">AI</div>
+          <div class="skill-badge">Machine Learning</div>
+          <div class="skill-badge">PictoBlox</div>
+        </div>
+      </div>
+    
+      <nav>
+        <ul>
+          <li><a href="#homework" class="active" data-section="homework">Homework Files</a></li>
+          <li><a href="#projects" data-section="projects">Project Files</a></li>
+        </ul>
+      </nav>
+    
+      <div id="homework" class="section active">
+        <div class="upload-container">
+          <h1>Homework Files Upload</h1>
+          
+          <div class="upload-area" id="uploadAreaHomework">
+            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            <p>Drop your homework files here or click to upload</p>
+            <input type="file" id="fileInputHomework" style="display: none" multiple>
+          </div>
+    
+          <div class="files-grid" id="filesGridHomework">
+            <!-- Homework files will appear here -->
+          </div>
+        </div>
+      </div>
+    
+      <div id="projects" class="section">
+        <div class="upload-container">
+          <h1>Project Files Upload</h1>
+          
+          <div class="upload-area" id="uploadAreaProjects">
+            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            <p>Drop your project files here or click to upload</p>
+            <input type="file" id="fileInputProjects" style="display: none" multiple>
+          </div>
+    
+          <div class="files-grid" id="filesGridProjects">
+            <!-- Project files will appear here -->
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+    let isAdmin = false;
+    
+    function selectRole(role) {
+      if (role === 'viewer') {
+        isAdmin = false;
+        document.getElementById('loginSection').style.display = 'none';
+        document.getElementById('mainContent').classList.add('active');
+        // Hide delete buttons and upload areas for viewers
+        document.querySelectorAll('.delete-btn').forEach(btn => btn.style.display = 'none');
+        document.querySelectorAll('.upload-area').forEach(area => area.style.display = 'none');
+      } else if (role === 'youssef') {
+        document.getElementById('loginForm').classList.add('active');
+        document.querySelector('.role-selection').style.display = 'none';
+      }
+    }
+    
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      if (username === 'youssef1' && password === '123456y') {
+        isAdmin = true;
+        document.getElementById('loginSection').style.display = 'none';
+        document.getElementById('mainContent').classList.add('active');
+        // Show all controls for admin
+        document.querySelectorAll('.delete-btn').forEach(btn => btn.style.display = 'block');
+        document.querySelectorAll('.upload-area').forEach(area => area.style.display = 'block');
+      } else {
+        document.getElementById('errorMessage').style.display = 'block';
+      }
+    }
+    
+    // Load saved files from localStorage
+    loadSavedFiles('homework');
+    loadSavedFiles('projects');
+    
+    // Navigation functionality
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('.section');
+    
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        
+        const sectionId = link.getAttribute('data-section');
+        sections.forEach(section => {
+          section.classList.remove('active');
+          if (section.id === sectionId) {
+            section.classList.add('active');
+          }
+        });
+      });
+    });
+    
+    function setupFileUpload(uploadArea, fileInput, filesGrid, section) {
+      uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.style.backgroundColor = '#f8f9fa';
+      });
+    
+      uploadArea.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        uploadArea.style.backgroundColor = 'white';
+      });
+    
+      uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.style.backgroundColor = 'white';
+        handleFiles(e.dataTransfer.files, filesGrid, section);
+      });
+    
+      uploadArea.addEventListener('click', () => {
+        fileInput.click();
+      });
+    
+      fileInput.addEventListener('change', (e) => {
+        handleFiles(e.target.files, filesGrid, section);
+      });
+    }
+    
+    function handleFiles(files, filesGrid, section) {
+      if (!isAdmin) {
+        alert('Only Youssef can upload files');
+        return;
+      }
+      Array.from(files).forEach(file => {
+        const fileId = Date.now() + Math.random().toString(36).substr(2, 9);
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+          const fileData = {
+            id: fileId,
+            name: file.name,
+            size: (file.size / 1024).toFixed(2),
+            uploadDate: new Date().toLocaleDateString(),
+            content: e.target.result
+          };
+          
+          addFileCard(fileData, filesGrid, section);
+          saveFileToStorage(fileData, section);
+        };
+        
+        reader.readAsDataURL(file);
+      });
+    }
+    
+    function addFileCard(fileData, filesGrid, section) {
+      const card = document.createElement('div');
+      card.className = 'file-card';
+      card.dataset.fileId = fileData.id;
+      
+      const downloadLink = document.createElement('a');
+      downloadLink.href = fileData.content;
+      downloadLink.download = fileData.name;
+      downloadLink.className = 'download-btn';
+      downloadLink.textContent = 'Download';
+      
+      card.innerHTML = `
+        <h3>${fileData.name}</h3>
+        <p>Size: ${fileData.size} KB</p>
+        <p>Uploaded: ${fileData.uploadDate}</p>
+      `;
+      
+      const deleteBtn = document.createElement('button');
+      deleteBtn.className = 'delete-btn';
+      deleteBtn.textContent = 'Delete';
+      deleteBtn.onclick = () => deleteFile(fileData.id, section);
+      
+      card.appendChild(downloadLink);
+      card.appendChild(deleteBtn);
+      
+      filesGrid.appendChild(card);
+    }
+    
+    function saveFileToStorage(fileData, section) {
+      const files = JSON.parse(localStorage.getItem(`${section}Files`) || '[]');
+      files.push(fileData);
+      localStorage.setItem(`${section}Files`, JSON.stringify(files));
+    }
+    
+    function loadSavedFiles(section) {
+      const filesGrid = document.getElementById(`filesGrid${section.charAt(0).toUpperCase() + section.slice(1)}`);
+      const files = JSON.parse(localStorage.getItem(`${section}Files`) || '[]');
+      
+      files.forEach(fileData => {
+        addFileCard(fileData, filesGrid, section);
+      });
+    }
+    
+    function deleteFile(fileId, section) {
+      if (!isAdmin) {
+        alert('Only Youssef can delete files');
+        return;
+      }
+      const fileCard = document.querySelector(`[data-file-id="${fileId}"]`);
+      if (fileCard) {
+        fileCard.remove();
+      }
+      const files = JSON.parse(localStorage.getItem(`${section}Files`) || '[]');
+      const updatedFiles = files.filter(file => file.id !== fileId);
+      localStorage.setItem(`${section}Files`, JSON.stringify(updatedFiles));
+    }
+    
+    // Setup both sections
+    setupFileUpload(
+      document.getElementById('uploadAreaHomework'),
+      document.getElementById('fileInputHomework'),
+      document.getElementById('filesGridHomework'),
+      'homework'
+    );
+    
+    setupFileUpload(
+      document.getElementById('uploadAreaProjects'),
+      document.getElementById('fileInputProjects'),
+      document.getElementById('filesGridProjects'),
+      'projects'
+    );
+    </script>
+    
+    </body>
+    </html>
